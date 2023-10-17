@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="outer-container">
+        <section class="content">
+          <!-- * weather section ------------------------------------- -->
+          <div id="headline">
+            <h1>Weather App</h1>
+            <h2>enter a location to start</h2>
+          </div>
+          <section class="weather hidden">
+            <!-- current weather ------------------------------------ -->
+            <div class="current">
+              <div class="current-data">
+                <img id="iconHTML" src="#" alt="icon" />
+                <p id="description"></p>
+                <p>
+                  <span id="temperature"></span>
+                  <span class="big unit"></span>
+                </p>
+
+                <p class="feels-like">
+                  <span id="feel"></span>
+                  <span class="unit"></span>
+                </p>
+
+                <p id="date"></p>
+                <p id="time"></p>
+              </div>
+
+              <div class="unit-selection">(unit seclection)</div>
+            </div>
+            <!-- weather forecast -------------------------------- -->
+            <!-- ! dieser teil dient nur als platzhalter und soll ggf wieder gelöscht werden, -->
+            <!-- ! wenn die elemente durch einen loop in js erstellt werden -->
+            <div class="forecast">
+              <!-- - forecast placeholder 1 ----- -->
+              <div id="forecast12h">
+                <div>
+                  <p>
+                    <span class="forecast-temp"></span>
+                    <span class="unit"></span>
+                  </p>
+                  <img src="#" alt="icon" />
+                  <p class="forecast-time">time</p>
+                </div>
+
+                <div>
+                  <p>
+                    <span class="forecast-temp"></span>
+                    <span class="unit"></span>
+                  </p>
+                  <img src="#" alt="icon" />
+                  <p class="forecast-time">time</p>
+                </div>
+
+                <div>
+                  <p>
+                    <span class="forecast-temp"></span>
+                    <span class="unit"></span>
+                  </p>
+                  <img src="#" alt="icon" />
+                  <p class="forecast-time">time</p>
+                </div>
+
+                <div>
+                  <p>
+                    <span class="forecast-temp"></span>
+                    <span class="unit"></span>
+                  </p>
+                  <img src="#" alt="icon" />
+                  <p class="forecast-time">time</p>
+                </div>
+              </div>
+              <!--  -->
+              <br />
+              <!-- - forecast placeholder 2 ----- -->
+              <div id="forecast24h">
+                <div>
+                  <p>
+                    <span class="forecast-temp"></span>
+                    <span class="unit"></span>
+                  </p>
+                  <img src="#" alt="icon" />
+                  <p class="forecast-time">time</p>
+                </div>
+
+                <div>
+                  <p>
+                    <span class="forecast-temp"></span>
+                    <span class="unit"></span>
+                  </p>
+                  <img src="#" alt="icon" />
+                  <p class="forecast-time">time</p>
+                </div>
+
+                <div>
+                  <p>
+                    <span class="forecast-temp"></span>
+                    <span class="unit"></span>
+                  </p>
+                  <img src="#" alt="icon" />
+                  <p class="forecast-time">time</p>
+                </div>
+
+                <div>
+                  <p>
+                    <span class="forecast-temp"></span>
+                    <span class="unit"></span>
+                  </p>
+                  <img src="#" alt="icon" />
+                  <p class="forecast-time">time</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- * info section ----------------------------------------->
+          <section class="info">
+            <div class="location">
+              <div class="location-input">
+                <input
+                  id="locationInput"
+                  type="text"
+                  placeholder="search location..."
+                />
+                <!-- # value wieder löschen -->
+                <button id="button">go</button>
+              </div>
+              <div class="location-output">
+                <img src="./assets/img/icon-white.svg" alt="icon" />
+
+                <p id="locationOutput"></p>
+              </div>
+            </div>
+
+            <div class="hidden">
+              <!-- suntimes ------------------------ -->
+              <div class="suntimes">
+                <!-- - sunrise -->
+                <div>
+                  <p class="category">Sunrise</p>
+                  <div class="sun-icons">
+                    <p id="sunrise"></p>
+                    <img
+                      src="./assets/img/icons8-sonnenaufgang-64.png"
+                      alt="icon"
+                    />
+                  </div>
+                </div>
+
+                <!-- - sunset -->
+                <div>
+                  <p class="category">Sunset</p>
+                  <div class="sun-icons">
+                    <p id="sunset"></p>
+                    <img
+                      src="./assets/img/icons8-sonnenuntergang-64.png"
+                      alt="icon"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- info ------------------------- -->
+
+              <div class="grid-container">
+                <div class="air">
+                  <!-- ----- -->
+
+                  <h3>Air</h3>
+                  <div class="inner-grid">
+                    <!-- - humidity -->
+                    <div class="grid-item">
+                      <p class="category">Humidity</p>
+                      <div class="icon-values">
+                        <img
+                          src="./assets/img/icons8-feuchtigkeitsmesser-64.png"
+                          alt="icon"
+                        />
+                        <p id="humid"></p>
+                      </div>
+                    </div>
+
+                    <!-- - pressure  -->
+                    <div class="grid-item">
+                      <p class="category">Pressure</p>
+                      <div class="icon-values">
+                        <img
+                          src="./assets/img/icons8-luftdruck-64.png"
+                          alt="icon"
+                        />
+                        <p id="airPressure"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ----- -->
+
+                <!-- - wind -->
+                <div class="wind">
+                  <h3>Wind</h3>
+                  <div class="inner-grid">
+                    <!-- - wind speed -->
+                    <div class="grid-item">
+                      <p class="category">Speed</p>
+                      <div class="icon-values">
+                        <img src="./assets/img/icons8-wind-64.png" alt="icon" />
+                        <p id="windSpeed"></p>
+                      </div>
+                    </div>
+
+                    <!-- - wind direction -->
+                    <div class="grid-item">
+                      <p class="category">Direction</p>
+                      <div class="icon-values">
+                        <img
+                          src="./assets/img/icons8-windsack-64.png"
+                          alt="icon"
+                        />
+                        <p id="windDirection"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ----- -->
+
+                <!-- - chance of rain -->
+                <div class="grid-item">
+                  <p class="category">Chance of rain</p>
+                  <div class="icon-values">
+                    <img
+                      src="./assets/img/icons8-regenschirm-64.png"
+                      alt="icon"
+                    />
+                    <p id="rainChance"></p>
+                  </div>
+                </div>
+
+                <!-- - AQI -->
+                <div class="grid-item">
+                  <p class="category">Air Quality</p>
+                  <div class="icon-values">
+                    <img src="./assets/img/icons8-staub-64.png" alt="icon" />
+                    <p id="aqIndex"></p>
+                  </div>
+                </div>
+
+                <!-- - clouds -->
+                <div class="grid-item">
+                  <p class="category">Clouds</p>
+                  <div class="icon-values">
+                    <img src="./assets/img/icons8-wolken-64.png" alt="icon" />
+                    <p id="cloud"></p>
+                  </div>
+                </div>
+
+                <!-- - view -->
+                <div class="grid-item">
+                  <p class="category">View</p>
+                  <div class="icon-values">
+                    <img
+                      src="./assets/img/icons8-nationalpark-64.png"
+                      alt="icon"
+                    />
+                    <p id="view"></p>
+                  </div>
+                </div>
+                <!--  -->
+              </div>
+
+              <!-- : data end ====================================== -->
+
+              <div class="icon-credits">
+                <a
+                  target="_blank"
+                  href="https://icons8.de/icon/set/wetter/tiny-color"
+                  >weather icons</a
+                >
+                by <a target="_blank" href="https://icons8.com">icons8</a>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,339 @@
+// todo : code muss noch komplett überarbeitet werden
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// - font ********************************************************
+
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: RobotoLight;
+  src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
+
+@font-face {
+  font-family: RobotoThin;
+  src: url("../fonts/Roboto/Roboto-Thin.ttf");
+}
+
+// - variables ********************************************************
+
+$light: RobotoLight; // 300
+$thin: RobotoThin; // 100
+
+// - mixins ***********************************************************
+
+// ? beim zusammenfassen des codes zusammen auftretende muster speichern
+
+// - global classes ***************************************************
+
+.hidden {
+  display: none;
+}
+
+.forecast {
+  display: none;
+}
+
+// ? hier noch die ganzen sich wiederholenden styles wie flex/grid alignment
+// ? fonts, abstände und farben zusammenfassen, um den code zu kürzen
+
+// - general style *****************************************************
+
+html {
+  overflow: hidden;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 62.5%;
+  color: #fff;
+}
+
+main {
+  background: linear-gradient(243deg, #1c565e 0%, #3dc7da 100%);
+  width: 100vw;
+  height: 750px;
+  margin: 0 auto;
+  font-size: 2rem;
+
+  div.outer-container {
+    // margin: 2rem;
+    section.content {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 3rem;
+
+      div#headline {
+        margin: 2rem;
+
+        h1 {
+          font-size: 4rem;
+        }
+
+        h2 {
+          font-family: $light;
+          font-size: 3rem;
+        }
+      }
+
+      // * weather section ******************************************
+      // * ----------------------------------------------------------
+      section.weather {
+        padding: 2rem;
+
+        // * current weather ***********************************************
+        div.current {
+          display: flex;
+          justify-content: space-between;
+
+          div.current-data {
+            display: flex;
+            flex-direction: column;
+
+            img#iconHTML {
+              width: 10rem;
+              margin-top: 5rem;
+            }
+
+            p {
+              display: flex;
+              font-family: $light;
+              margin: 0 0 3rem 2rem;
+
+              &.feels-like {
+                font-family: $thin;
+              }
+
+              span {
+                display: block;
+              }
+
+              span#temperature {
+                font-size: 12rem;
+                font-family: $thin;
+              }
+
+              span.big {
+                font-size: 6rem;
+              }
+            }
+
+            p#date {
+              margin-bottom: 1rem;
+            }
+          }
+
+          .unit-selection {
+            font-size: 1rem;
+            margin-top: 8rem;
+          }
+        }
+
+        // * forecast ***********************************************
+        div.forecast {
+          div {
+            background-color: grey;
+            grid-template-columns: repeat(4, 1fr);
+          }
+
+          div#forecast12h {
+            display: grid;
+          }
+
+          div#forecast24h {
+            display: none;
+          }
+        }
+      }
+
+      // * info section *********************************************
+      // * ----------------------------------------------------------
+      section.info {
+        padding: 2rem;
+        background-color: rgb(214, 214, 214, 0.1);
+
+        img {
+          width: 25px;
+          height: 25px;
+        }
+
+        p.category {
+          font-family: $light;
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+
+        // * location ***********************************************
+        div.location {
+          font-family: $light;
+          font-size: 1.8rem;
+
+          div.location-input {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+
+            input {
+              background: transparent;
+              color: #fff;
+              border: 1px solid rgba(255, 255, 255, 0.25);
+              border-radius: 10px;
+              padding: 0.5rem;
+
+              &::placeholder {
+                color: rgba(255, 255, 255, 0.5);
+              }
+            }
+
+            button {
+              color: #fff;
+              font-family: $light;
+              background: linear-gradient(
+                315deg,
+                rgba(255, 255, 255, 0.25) 0%,
+                rgba(255, 255, 255, 0.75) 100%
+              );
+              border: none;
+              border-radius: 10px;
+              width: 7rem;
+              justify-self: center;
+
+              transition: all 1s ease;
+              cursor: pointer;
+
+              &:hover {
+                background: linear-gradient(
+                  315deg,
+                  rgba(255, 255, 255, 0.25) 0%,
+                  transparent 100%
+                );
+              }
+            }
+          }
+
+          div.location-output {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            img {
+              color: #fff;
+            }
+
+            p#locationOutput {
+              display: block;
+            }
+          }
+        }
+        // * sun times ***********************************************
+        div.suntimes {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          justify-items: center;
+          text-align: center;
+          margin: 2rem 0;
+
+          div {
+            div.sun-icons {
+              height: 14rem;
+              width: 7rem;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 2rem;
+              border-radius: 20px;
+              background: rgba(255, 255, 255, 0.25);
+
+              p {
+                font-size: 1.6rem;
+              }
+            }
+          }
+        }
+
+        // * info grid  all categories ***********************************************
+        div.grid-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          // justify-items: center;
+          gap: 2rem 0rem;
+
+          h3 {
+            font-size: 1.8rem;
+          }
+
+          div.grid-item {
+            padding-bottom: 1rem;
+            text-align: center;
+
+            border-bottom: 1px solid;
+            border-image: linear-gradient(
+              to right,
+              transparent 0%,
+              rgba(255, 255, 255, 0.25) 50%,
+              transparent 100%
+            );
+            border-image-slice: 10;
+
+            // &:nth-child(2),
+            // &:nth-child(4),
+            // &:nth-child(6) {
+            //   padding-left: 2rem;
+            // }
+
+            div.icon-values {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 1rem;
+              width: 15rem;
+              margin: 0 auto;
+
+              img {
+                margin-left: 1rem;
+              }
+
+              p {
+                // values
+                font-size: 1.4rem;
+              }
+            }
+          }
+
+          // * air & wind ***********************************************
+          div.inner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 0;
+          }
+
+          div.air,
+          div.wind {
+            grid-column: 1/3;
+            text-align: center;
+            margin-bottom: 1rem;
+          }
+
+          div.wind {
+            margin-bottom: 3rem;
+          }
+        }
+
+        div.icon-credits,
+        a {
+          font-size: 1rem;
+          padding-top: 2rem;
+          color: #000;
+          text-align: right;
+        }
+      }
+    }
+  }
+}

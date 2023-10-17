@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: RobotoLight;
+  src: url("../fonts/Roboto/Roboto-Light.ttf");
+}
+@font-face {
+  font-family: RobotoThin;
+  src: url("../fonts/Roboto/Roboto-Thin.ttf");
+}
+.hidden {
+  display: none;
+}
+
+.forecast {
+  display: none;
+}
+
+html {
+  overflow: hidden;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 62.5%;
+  color: #fff;
+}
+
+main {
+  background: linear-gradient(243deg, #1c565e 0%, #3dc7da 100%);
+  width: 100vw;
+  height: 750px;
+  margin: 0 auto;
+  font-size: 2rem;
+}
+main div.outer-container section.content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 3rem;
+}
+main div.outer-container section.content div#headline {
+  margin: 2rem;
+}
+main div.outer-container section.content div#headline h1 {
+  font-size: 4rem;
+}
+main div.outer-container section.content div#headline h2 {
+  font-family: RobotoLight;
+  font-size: 3rem;
+}
+main div.outer-container section.content section.weather {
+  padding: 2rem;
+}
+main div.outer-container section.content section.weather div.current {
+  display: flex;
+  justify-content: space-between;
+}
+main div.outer-container section.content section.weather div.current div.current-data {
+  display: flex;
+  flex-direction: column;
+}
+main div.outer-container section.content section.weather div.current div.current-data img#iconHTML {
+  width: 10rem;
+  margin-top: 5rem;
+}
+main div.outer-container section.content section.weather div.current div.current-data p {
+  display: flex;
+  font-family: RobotoLight;
+  margin: 0 0 3rem 2rem;
+}
+main div.outer-container section.content section.weather div.current div.current-data p.feels-like {
+  font-family: RobotoThin;
+}
+main div.outer-container section.content section.weather div.current div.current-data p span {
+  display: block;
+}
+main div.outer-container section.content section.weather div.current div.current-data p span#temperature {
+  font-size: 12rem;
+  font-family: RobotoThin;
+}
+main div.outer-container section.content section.weather div.current div.current-data p span.big {
+  font-size: 6rem;
+}
+main div.outer-container section.content section.weather div.current div.current-data p#date {
+  margin-bottom: 1rem;
+}
+main div.outer-container section.content section.weather div.current .unit-selection {
+  font-size: 1rem;
+  margin-top: 8rem;
+}
+main div.outer-container section.content section.weather div.forecast div {
+  background-color: grey;
+  grid-template-columns: repeat(4, 1fr);
+}
+main div.outer-container section.content section.weather div.forecast div#forecast12h {
+  display: grid;
+}
+main div.outer-container section.content section.weather div.forecast div#forecast24h {
+  display: none;
+}
+main div.outer-container section.content section.info {
+  padding: 2rem;
+  background-color: rgba(214, 214, 214, 0.1);
+}
+main div.outer-container section.content section.info img {
+  width: 25px;
+  height: 25px;
+}
+main div.outer-container section.content section.info p.category {
+  font-family: RobotoLight;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+main div.outer-container section.content section.info div.location {
+  font-family: RobotoLight;
+  font-size: 1.8rem;
+}
+main div.outer-container section.content section.info div.location div.location-input {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+main div.outer-container section.content section.info div.location div.location-input input {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+main div.outer-container section.content section.info div.location div.location-input input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+main div.outer-container section.content section.info div.location div.location-input button {
+  color: #fff;
+  font-family: RobotoLight;
+  background: linear-gradient(315deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.75) 100%);
+  border: none;
+  border-radius: 10px;
+  width: 7rem;
+  justify-self: center;
+  transition: all 1s ease;
+  cursor: pointer;
+}
+main div.outer-container section.content section.info div.location div.location-input button:hover {
+  background: linear-gradient(315deg, rgba(255, 255, 255, 0.25) 0%, transparent 100%);
+}
+main div.outer-container section.content section.info div.location div.location-output {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+main div.outer-container section.content section.info div.location div.location-output img {
+  color: #fff;
+}
+main div.outer-container section.content section.info div.location div.location-output p#locationOutput {
+  display: block;
+}
+main div.outer-container section.content section.info div.suntimes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  text-align: center;
+  margin: 2rem 0;
+}
+main div.outer-container section.content section.info div.suntimes div div.sun-icons {
+  height: 14rem;
+  width: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+}
+main div.outer-container section.content section.info div.suntimes div div.sun-icons p {
+  font-size: 1.6rem;
+}
+main div.outer-container section.content section.info div.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 0rem;
+}
+main div.outer-container section.content section.info div.grid-container h3 {
+  font-size: 1.8rem;
+}
+main div.outer-container section.content section.info div.grid-container div.grid-item {
+  padding-bottom: 1rem;
+  text-align: center;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+  border-image-slice: 10;
+}
+main div.outer-container section.content section.info div.grid-container div.grid-item div.icon-values {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 15rem;
+  margin: 0 auto;
+}
+main div.outer-container section.content section.info div.grid-container div.grid-item div.icon-values img {
+  margin-left: 1rem;
+}
+main div.outer-container section.content section.info div.grid-container div.grid-item div.icon-values p {
+  font-size: 1.4rem;
+}
+main div.outer-container section.content section.info div.grid-container div.inner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 0;
+}
+main div.outer-container section.content section.info div.grid-container div.air,
+main div.outer-container section.content section.info div.grid-container div.wind {
+  grid-column: 1/3;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+main div.outer-container section.content section.info div.grid-container div.wind {
+  margin-bottom: 3rem;
+}
+main div.outer-container section.content section.info div.icon-credits,
+main div.outer-container section.content section.info a {
+  font-size: 1rem;
+  padding-top: 2rem;
+  color: #000;
+  text-align: right;
+}
+
+/*# sourceMappingURL=style.css.map */
