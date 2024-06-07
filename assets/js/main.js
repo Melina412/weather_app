@@ -10,51 +10,51 @@
 
 // * setting variables
 
-const API_key = "14198a73da3c334daf2c8cc21dfb50db";
-let city_name = "Berlin";
-let state_code = "";
-let country_code = "";
+const API_key = '14198a73da3c334daf2c8cc21dfb50db';
+let city_name = 'Berlin';
+let state_code = '';
+let country_code = '';
 let limit = 1;
 
-let input = document.getElementById("locationInput");
-let output = document.getElementById("locationOutput");
-let location_value = "";
-let geocode_fetch_link = "";
+let input = document.getElementById('locationInput');
+let output = document.getElementById('locationOutput');
+let location_value = '';
+let geocode_fetch_link = '';
 
-const unit = document.querySelectorAll(".unit");
+const unit = document.querySelectorAll('.unit');
 
 const weekdays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
 ];
-let weekday = "";
+let weekday = '';
 
 const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
-let month = "";
+let month = '';
 
 // -----------------------------------------------------------------------------------------------
 
 // * real time location input
 
-input.addEventListener("input", (event) => {
+input.addEventListener('input', (event) => {
   location_value = event.target.value;
   output.innerHTML = location_value;
 });
@@ -65,20 +65,20 @@ input.addEventListener("input", (event) => {
 //
 // * set input location and start fetch via button click
 
-button.addEventListener("click", (event) => {
+button.addEventListener('click', (event) => {
   event.preventDefault();
   city_name = location_value;
   //   # city_name input value aktualisierung wieder rein kommentieren !!!
-  input.value = "";
+  input.value = '';
 
   // display elements with content & hide start headline
-  document.querySelectorAll(".hidden").forEach((element) => {
-    element.classList.remove("hidden");
+  document.querySelectorAll('.hidden').forEach((element) => {
+    element.classList.remove('hidden');
   });
-  headline.classList.add("hidden");
+  headline.classList.add('hidden');
 
   // update fetch link with input location and trigger function
-  geocode_fetch_link = `http://api.openweathermap.org/geo/1.0/direct?q=${city_name}${state_code}${country_code}&limit=${limit}&appid=${API_key}`;
+  geocode_fetch_link = `https://api.openweathermap.org/geo/1.0/direct?q=${city_name}${state_code}${country_code}&limit=${limit}&appid=${API_key}`;
   fetchData();
 });
 
@@ -120,12 +120,12 @@ const fetchData = () => {
 
       const current_weather_fetch_link_imperial = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}&units=imperial`;
 
-      let unit_system = "°C";
+      let unit_system = '°C';
 
       fetch(current_weather_fetch_link)
         .then((response) => response.json())
         .then((weather_data) => {
-          console.log("current weather:", weather_data);
+          console.log('current weather:', weather_data);
           //
           // * weather data processing
           //
@@ -169,7 +169,7 @@ const fetchData = () => {
           //
           let wind_speed = weather_data.wind.speed * 3.6; // m/s * 3.6 = km/h
           let wind_deg = weather_data.wind.deg; // 0-360°
-          let wind_dir = "";
+          let wind_dir = '';
           //
           // console.log({ dt });
           // console.log({ data_time });
@@ -199,8 +199,8 @@ const fetchData = () => {
 
           let year = data_time.getFullYear();
           let day = data_time.getDate();
-          let hour = data_time.getHours().toString().padStart(2, "0");
-          let minute = data_time.getMinutes().toString().padStart(2, "0");
+          let hour = data_time.getHours().toString().padStart(2, '0');
+          let minute = data_time.getMinutes().toString().padStart(2, '0');
 
           date.innerHTML = `${month}  ${day}th ${year}`;
 
@@ -210,13 +210,13 @@ const fetchData = () => {
           let sunrise_hour = sunrise_date
             .getHours()
             .toString()
-            .padStart(2, "0");
+            .padStart(2, '0');
           let sunrise_min = sunrise_date
             .getMinutes()
             .toString()
-            .padStart(2, "0");
-          let sunset_hour = sunset_date.getHours().toString().padStart(2, "0");
-          let sunset_min = sunset_date.getMinutes().toString().padStart(2, "0");
+            .padStart(2, '0');
+          let sunset_hour = sunset_date.getHours().toString().padStart(2, '0');
+          let sunset_min = sunset_date.getMinutes().toString().padStart(2, '0');
 
           sunrise.innerHTML = `${sunrise_hour}:${sunrise_min}`;
           sunset.innerHTML = `${sunset_hour}:${sunset_min}`;
@@ -231,21 +231,21 @@ const fetchData = () => {
           // function to transform wind degrees into cardinal diretions
           const windDir = () => {
             if (wind_deg >= 337.5 || wind_deg < 22.5) {
-              wind_dir = "North";
+              wind_dir = 'North';
             } else if (wind_deg > 22.5 && wind_deg <= 67.5) {
-              wind_dir = "Northeast";
+              wind_dir = 'Northeast';
             } else if (wind_deg >= 67.5 && wind_deg < 112.5) {
-              wind_dir = "East";
+              wind_dir = 'East';
             } else if (wind_deg >= 112.5 && wind_deg < 157.5) {
-              wind_dir = "Southeast";
+              wind_dir = 'Southeast';
             } else if (wind_deg >= 157.5 && wind_deg < 202.5) {
-              wind_dir = "South";
+              wind_dir = 'South';
             } else if (wind_deg >= 202.5 && wind_deg < 247.5) {
-              wind_dir = "Southwest";
+              wind_dir = 'Southwest';
             } else if (wind_deg >= 247.5 && wind_deg < 292.5) {
-              wind_dir = "West";
+              wind_dir = 'West';
             } else if (wind_deg >= 292.5 && wind_deg < 337.5) {
-              wind_dir = "Northwest";
+              wind_dir = 'Northwest';
             }
             windDirection.innerHTML = wind_dir;
           };
@@ -254,7 +254,7 @@ const fetchData = () => {
           // current weather error:
         })
         .catch((error) => {
-          console.error("error while loading current weather data", error);
+          console.error('error while loading current weather data', error);
         });
       //
       //
@@ -297,8 +297,8 @@ const fetchData = () => {
           //
           //
           // * 24h forecast
-          let temp_output_spans = document.querySelectorAll(".forecast-temp");
-          let time_output_spans = document.querySelectorAll(".forecast-time");
+          let temp_output_spans = document.querySelectorAll('.forecast-temp');
+          let time_output_spans = document.querySelectorAll('.forecast-time');
 
           for (
             let i = 1;
@@ -324,21 +324,21 @@ const fetchData = () => {
           // forecast error:
         })
         .catch((error) => {
-          console.error("error while loading weather forecast data", error);
+          console.error('error while loading weather forecast data', error);
         });
       //
       // ------------------------------------------------------------------------------------------
       // * current aqi fetch **********************************************************************
       // ------------------------------------------------------------------------------------------
       //
-      const aqi_fetch_link = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_key}`;
+      const aqi_fetch_link = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_key}`;
       // console.log(aqi_fetch_link);
       //
       //
       fetch(aqi_fetch_link)
         .then((response) => response.json())
         .then((aqi_data) => {
-          console.log("aqi data:", aqi_data);
+          console.log('aqi data:', aqi_data);
           //
           // aqi data processing
           let aqi = aqi_data.list[0].main.aqi;
@@ -349,13 +349,13 @@ const fetchData = () => {
           // aqi error:
         })
         .catch((error) => {
-          console.error("error while loading aqi data", error);
+          console.error('error while loading aqi data', error);
         });
       //
       // geocode error:
     })
     .catch((error) => {
-      console.error("error while loading geocoding data", error);
+      console.error('error while loading geocoding data', error);
     });
 };
 // # auch wieder löschen: -------------------------------------------
